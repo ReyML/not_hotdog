@@ -236,15 +236,21 @@
             margin-bottom: 2rem;
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
         }
+
+        #main-title {
+            color: white;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        }
+
+        .result-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
     </style>
 </head>
 
 <body>
     <div id="app-container" class="p-4">
         <div class="max-w-sm w-full text-center">
-            <h1 class="hidden text-5xl font-bold text-gray-800 mb-8">Not Hotdog</h1>
-            <img src="https://i.ibb.co/C0D1jBv/not-hotdog-logo.png" alt="Not Hotdog Logo" class="main-logo mx-auto">
-
             <input type="file" id="imageInput" accept="image/*" class="hidden">
 
             <div id="uploadArea" onclick="document.getElementById('imageInput').click()" class="border-2 border-dashed border-gray-400 rounded-lg p-12 cursor-pointer hover:border-blue-500 bg-white shadow-md transition-colors">
@@ -346,11 +352,18 @@
                 }, 500);
 
             } catch (error) {
-                console.error('Analysis error:', error);
+                console.error('Full analysis chain error:', error);
+                let userMessage = `An error occurred: ${error.message}<br>Please try again.`;
+                const errorMessage = error.message.toLowerCase();
+
+                if (errorMessage.includes('busy') || errorMessage.includes('timed out') || errorMessage.includes('rate-limited')) {
+                    userMessage = "The free AI model is currently busy due to high demand.<br>Please try again in a moment.";
+                }
+
                 loadingContainer.style.display = 'none';
                 uploadArea.style.display = 'block';
                 statusDiv.style.display = 'block';
-                statusDiv.innerHTML = `Error: ${error.message}<br>Please try again.`;
+                statusDiv.innerHTML = userMessage;
                 statusDiv.style.color = '#dc3545';
                 selectedImage = null;
                 analyzedImageSrc = null;
