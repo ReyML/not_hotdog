@@ -258,10 +258,27 @@
             font-style: italic;
             pointer-events: none;
         }
+
+        .top-quote {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.75rem; /* 12px */
+            font-style: italic;
+            pointer-events: none;
+            z-index: 10;
+        }
     </style>
 </head>
 
 <body>
+    <header class="top-quote">
+        "you're fat and a poor"
+    </header>
     <div id="app-container" class="p-4">
         <div class="max-w-sm w-full text-center">
             <input type="file" id="imageInput" accept="image/*" class="hidden">
@@ -300,9 +317,7 @@
         </div>
     </div>
 
-    <footer class="main-footer">
-        "you're fat and a poor"
-    </footer>
+    <footer class="main-footer"></footer>
 
     <script type="module">
         let selectedImage = null;
