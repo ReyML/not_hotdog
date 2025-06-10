@@ -7,8 +7,12 @@
 # Logs
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log* 
+yarn-error.log*
 
-/.cursor
+# Capacitor
+/android
+/ios
+capacitor.config.json
+
 /.cursor
 .cursor

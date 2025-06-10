@@ -9,10 +9,10 @@ const PORT = process.env.PORT || 3000
 
 app.use(cors())
 app.use(express.json({ limit: "10mb" }))
-app.use(express.static(__dirname))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"))
+  res.sendFile(path.join(__dirname, "public", "index.html"))
 })
 
 app.post("/analyze-image", async (req, res) => {
