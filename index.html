@@ -245,6 +245,19 @@
         .result-btn:hover {
             background-color: rgba(255, 255, 255, 0.3);
         }
+
+        .main-footer {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.75rem; /* 12px */
+            font-style: italic;
+            pointer-events: none;
+        }
     </style>
 </head>
 
@@ -286,6 +299,10 @@
             <button id="no-thanks-btn" class="result-btn" onclick="resetApp(event)">No, thanks</button>
         </div>
     </div>
+
+    <footer class="main-footer">
+        "you're fat and a poor"
+    </footer>
 
     <script type="module">
         let selectedImage = null;
