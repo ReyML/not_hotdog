@@ -13,5 +13,6 @@ yarn-error.log*
 /android
 /ios
 capacitor.config.json
+capacitor.config.prod.json
 
 /.cursor

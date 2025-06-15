@@ -460,20 +460,19 @@
         window.shareResult = async function(event) {
             event.stopPropagation(); // Prevent the result screen from closing
 
-            const shareData = {
-                title: 'Not Hotdog',
-                text: currentResultIsHotdog ? 'I ate a hotdog! ✅' : 'This is not a hotdog. ❌',
-                url: window.location.href
-            };
+            const { Share } = Capacitor.Plugins;
 
             try {
-                if (navigator.share) {
-                    await navigator.share(shareData);
-                } else {
-                    alert('Sharing is not supported on this browser.');
-                }
+                await Share.share({
+                    title: 'Not Hotdog',
+                    text: currentResultIsHotdog ? 'I ate a hotdog! ✅' : 'This is not a hotdog. ❌',
+                    url: 'https://itunes.apple.com/app/idYOUR_APP_ID', // Optional: Replace with your App Store link later
+                    dialogTitle: 'Share with friends',
+                });
             } catch (err) {
-                console.error('Error sharing:', err);
+                // This error can happen if the user cancels the share sheet.
+                // We can safely ignore it.
+                console.log('Share dismissed or failed', err);
             }
         }
     </script>
