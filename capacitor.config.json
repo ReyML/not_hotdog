@@ -1,0 +1,17 @@
+{
+  "appId": "com.nothotdog.app",
+  "appName": "Not Hotdog",
+  "webDir": "public",
+  "server": {
+    "url": "https://not-hotdog.onrender.com/",
+    "cleartext": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "launchAutoHide": true,
+      "backgroundColor": "#000000",
+      "showSpinner": false
+    }
+  }
+}
