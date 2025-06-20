@@ -74,7 +74,7 @@ app.post("/analyze-image", async (req, res) => {
             content: [
               {
                 type: "text",
-                text: 'Look at this image carefully. Is there a hotdog (hot dog/frankfurter/sausage in a bun) visible in this image? Answer with exactly "HOTDOG" if you see a hotdog, or exactly "NOT_HOTDOG" if you do not see a hotdog. Be very strict - only respond HOTDOG if you clearly see a sausage in a bun.',
+                text: 'Look at this image carefully. Is there a hamburger (burger/cheeseburger/meat patty in a bun) visible in this image? Answer with exactly "HAMBURGER" if you see a hamburger, or exactly "NOT_HAMBURGER" if you do not see a hamburger. Be very strict - only respond HAMBURGER if you clearly see a meat patty in a bun.',
               },
               { type: "image_url", image_url: { url: image } },
             ],
@@ -87,8 +87,8 @@ app.post("/analyze-image", async (req, res) => {
           Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
           "Content-Type": "application/json",
           "HTTP-Referer":
-            req.get("Origin") || "https://not-hotdog-r9z0.onrender.com",
-          "X-Title": "Not Hotdog",
+            req.get("Origin") || "https://not-hamburger-r9z0.onrender.com",
+          "X-Title": "Not Hamburger",
         },
       }
     )
@@ -107,10 +107,10 @@ app.post("/analyze-image", async (req, res) => {
           message: {
             ...response.data.choices[0].message,
             content:
-              aiResponse.includes("HOTDOG") &&
-              !aiResponse.includes("NOT_HOTDOG")
-                ? "HOTDOG"
-                : "NOT_HOTDOG",
+              aiResponse.includes("HAMBURGER") &&
+              !aiResponse.includes("NOT_HAMBURGER")
+                ? "HAMBURGER"
+                : "NOT_HAMBURGER",
           },
         },
       ],

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Not Hotdog</title>
+    <title>Not Hamburger</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -26,8 +26,8 @@
             background-color: #34c6f2;
         }
 
-        #result-hotdog,
-        #result-not-hotdog {
+        #result-hamburger,
+        #result-not-hamburger {
             position: fixed;
             top: 0;
             left: 0;
@@ -45,11 +45,11 @@
             flex-direction: column;
         }
 
-        #result-hotdog {
+        #result-hamburger {
             background-color: #28a745;
         }
 
-        #result-not-hotdog {
+        #result-not-hamburger {
             background-color: #dc3545;
         }
 
@@ -184,8 +184,8 @@
 
         @media (max-width: 640px) {
 
-            #result-hotdog,
-            #result-not-hotdog {
+            #result-hamburger,
+            #result-not-hamburger {
                 font-size: 12vw;
             }
 
@@ -288,7 +288,7 @@
             <input type="file" id="imageInput" accept="image/*" class="hidden">
 
             <div id="uploadArea" onclick="document.getElementById('imageInput').click()" class="border-2 border-dashed border-gray-400 rounded-lg p-12 cursor-pointer hover:border-blue-500 bg-white shadow-md transition-colors">
-                <div class="text-6xl mb-4">🌭</div>
+                <div class="text-6xl mb-4">🍔</div>
                 <p class="text-gray-600 font-medium text-lg">Select Image</p>
                 <p class="text-gray-400 text-sm mt-2">Tap to choose photo</p>
             </div>
@@ -307,12 +307,12 @@
     <!-- New Result Page Overlay -->
     <div id="result-page" onclick="resetApp()">
         <img id="result-image" src="" alt="Analyzed image" />
-        <div id="hotdog-banner" class="result-banner top-banner" style="display: none;">
-            <span>Hotdog!</span>
+        <div id="hamburger-banner" class="result-banner top-banner" style="display: none;">
+            <span>Hamburger!</span>
             <div class="icon-wrapper">✓</div>
         </div>
-        <div id="not-hotdog-banner" class="result-banner bottom-banner" style="display: none;">
-            <span>Not hotdog!</span>
+        <div id="not-hamburger-banner" class="result-banner bottom-banner" style="display: none;">
+            <span>Not hamburger!</span>
             <div class="icon-wrapper">✕</div>
         </div>
         <div class="result-buttons">
@@ -328,15 +328,15 @@
     <script type="module">
         let selectedImage = null;
         let analyzedImageSrc = null;
-        let currentResultIsHotdog = false;
+        let currentResultIsHamburger = false;
         const statusDiv = document.getElementById('status');
         const appContainer = document.getElementById('app-container');
         const uploadArea = document.getElementById('uploadArea');
         const loadingContainer = document.getElementById('loadingContainer');
         const resultPage = document.getElementById('result-page');
         const resultImage = document.getElementById('result-image');
-        const hotdogBanner = document.getElementById('hotdog-banner');
-        const notHotdogBanner = document.getElementById('not-hotdog-banner');
+        const hamburgerBanner = document.getElementById('hamburger-banner');
+        const notHamburgerBanner = document.getElementById('not-hamburger-banner');
 
         document.getElementById('imageInput').addEventListener('change', function (e) {
             const file = e.target.files[0];
@@ -382,11 +382,11 @@
                 const description = result.choices?.[0]?.message?.content || 'No response';
                 console.log('AI Response:', description);
 
-                const isHotdog = detectHotdog(description);
+                const isHamburger = detectHamburger(description);
 
                 // Small delay for dramatic effect, then show result
                 setTimeout(() => {
-                    showResult(isHotdog);
+                    showResult(isHamburger);
                 }, 500);
 
             } catch (error) {
@@ -409,34 +409,34 @@
             }
         };
 
-        function detectHotdog(description) {
+        function detectHamburger(description) {
             const text = description.toUpperCase().trim();
             console.log('Detection input:', text);
 
             // Simple and robust detection
-            if (text === 'HOTDOG' || text === 'HOT DOG') {
+            if (text === 'HAMBURGER' || text === 'BURGER') {
                 return true;
             }
-            if (text === 'NOT_HOTDOG' || text === 'NOT HOTDOG' || text.includes('NOT')) {
+            if (text === 'NOT_HAMBURGER' || text === 'NOT HAMBURGER' || text.includes('NOT')) {
                 return false;
             }
 
-            // Fallback - if response contains hotdog but not "not"
-            return text.includes('HOTDOG') && !text.includes('NOT');
+            // Fallback - if response contains hamburger but not "not"
+            return text.includes('HAMBURGER') && !text.includes('NOT');
         }
 
-        function showResult(isHotdog) {
-            currentResultIsHotdog = isHotdog;
+        function showResult(isHamburger) {
+            currentResultIsHamburger = isHamburger;
             // Hide main app and show result page
             appContainer.style.display = 'none';
             resultImage.src = analyzedImageSrc;
             resultPage.style.display = 'flex';
 
             // Show the correct banner
-            if (isHotdog) {
-                hotdogBanner.style.display = 'flex';
+            if (isHamburger) {
+                hamburgerBanner.style.display = 'flex';
             } else {
-                notHotdogBanner.style.display = 'flex';
+                notHamburgerBanner.style.display = 'flex';
             }
         }
 
@@ -446,8 +446,8 @@
             }
             // Hide results
             resultPage.style.display = 'none';
-            hotdogBanner.style.display = 'none';
-            notHotdogBanner.style.display = 'none';
+            hamburgerBanner.style.display = 'none';
+            notHamburgerBanner.style.display = 'none';
             resultImage.src = '';
             loadingContainer.style.backgroundImage = 'none';
 
@@ -471,8 +471,8 @@
 
             try {
                 await Share.share({
-                    title: 'Not Hotdog',
-                    text: currentResultIsHotdog ? 'I ate a hotdog! ✅' : 'This is not a hotdog. ❌',
+                    title: 'Not Hamburger',
+                    text: currentResultIsHamburger ? 'I ate a hamburger! ✅' : 'This is not a hamburger. ❌',
                     url: 'https://itunes.apple.com/app/idYOUR_APP_ID', // Optional: Replace with your App Store link later
                     dialogTitle: 'Share with friends',
                 });

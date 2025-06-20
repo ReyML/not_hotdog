@@ -1,6 +1,6 @@
 {
-  "appId": "com.nothotdog.app",
-  "appName": "Not Hotdog",
+  "appId": "com.nothamburger.app",
+  "appName": "Not Hamburger",
   "webDir": "public",
   "server": {
     "url": "https://not-hotdog.onrender.com/",

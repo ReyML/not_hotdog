@@ -1,7 +1,7 @@
 {
-  "name": "not-hotdog-backend",
+  "name": "not-hamburger-backend",
   "version": "1.0.0",
-  "description": "Backend server for the Not Hotdog app.",
+  "description": "Backend server for the Not Hamburger app.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
