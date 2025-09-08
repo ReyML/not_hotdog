@@ -65,7 +65,7 @@ app.post("/analyze-image", async (req, res) => {
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "meta-llama/llama-3.2-11b-vision-instruct:free",
+        model: "meta-llama/llama-3.2-11b-vision-instruct",
         max_tokens: 50,
         temperature: 0.1,
         messages: [
