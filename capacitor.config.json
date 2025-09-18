@@ -3,7 +3,7 @@
   "appName": "Not Hamburger",
   "webDir": "public",
   "server": {
-    "url": "https://not-hotdog.onrender.com/",
+    "url": "https://not.reyml.com/",
     "cleartext": false
   },
   "plugins": {
