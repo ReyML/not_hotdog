@@ -13,7 +13,7 @@
     ],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.nothamburger.app",
+      "bundleIdentifier": "com.nothotdog.app",
       "buildNumber": "1.7",
       "infoPlist": {
         "NSCameraUsageDescription": "To determine if an image contains a hotdog.",
@@ -27,7 +27,7 @@
       }
     },
     "android": {
-      "package": "com.nothamburger.app",
+      "package": "com.nothotdog.app",
       "versionCode": 7,
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
